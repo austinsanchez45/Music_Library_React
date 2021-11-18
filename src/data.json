@@ -1,14 +1,20 @@
 [
     {
-
+        "id": 1,
+        "title": "MORE",
+        "artist": "K/DA, Madison Beer & (G)I-DLE",
+        "album": "ALL OUT",
+        "genre": "K-pop",
+        "release_date": "2020-11-06"
     },
 
     {
-
-    },
-
-    {
-
+        "id": 2,
+        "title": "POP/STARS",
+        "artist": "K/DA, Madison Beer & (G)I-DLE feat. Jaira Burns",
+        "album": "Single (POP/STARS)",
+        "genre": "K-pop",
+        "release_date": "2018-11-03"
     }
 
 ]

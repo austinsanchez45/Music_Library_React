@@ -1,6 +1,6 @@
 import React from "react";
 
-const DisplaySongs = (promps) => {
+const DisplaySongs = (props) => {
     return (
         <tr>
 

@@ -6,8 +6,15 @@ import { useState } from 'react';
 
 const App = () => {
   // const[MusicTable, setMusicTable] = useState(data);
-
-    
+  const getAllSongs = async() => {
+    await axios
+    .get(`https://jsonplaceholder.typicode.com/users`)
+    .then((res) => {
+        console.log(res.data);
+        const people = res.data;
+        this.setState({ people });
+    }); 
+  }
 
   return (
     <div className="App">
@@ -16,6 +23,7 @@ const App = () => {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <button onClick = {getAllSongs}> Click me! </button>
         <a
           className="App-link"
           href="https://reactjs.org"

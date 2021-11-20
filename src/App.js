@@ -1,12 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 import axios from "axios"
-import DisplaySongs from ",/component_songs/DisplaySongs";
+import { Component } from 'react';
 
+class App extends Component {
 
-const App = () => {
-  // const[MusicTable, setMusicTable] = useState(data);
-  const getAllSongs = async() => {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      songs: [],
+    }
+  }
+
+  componentDidMount = () => {
+    this.getAllSongs;
+  }
+
+  getAllSongs = async() => {
     await axios
     .get("http://127.0.0.1:8000/musicapp/")
     .then((res) => {
@@ -16,23 +27,33 @@ const App = () => {
     }); 
   }
 
-  deleteSongs = async (songs) => {
-    let response = await axios.delete("http://127.0.0.1:8000/musicapp/");
+deleteSongs = async (songs) => {
+    let response = await axios.delete("http://127.0.0.1:8000/musicapp/" + songId + "/");
+    this.getAllSongs();
+    return response.status;
   }
 
-  handleSubmit = (event)=> {
-    event.preventDefault[{}];
-    const form_data = {
-      title: this.state.title,
-      artist: this.state.artist,
-      album: this.state.album,
-      release_date: this.state.release_date,
-      genre: this.state.genre,
-    };
-    let response = axios.post("http://127.0.0.1:8000/musicapp/", form_data);
-    let data = response.data;
-  }
+sortSongsByTitle = () => {
+    this.setState({songs: this.state.songs.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()))});
+}
 
+sortSongsByAlbum = () => {
+    this.setState({songs: this.state.songs.sort((a, b) => a.album.toLowerCase().localeCompare(b.album.toLowerCase()))});
+}
+
+sortSongsByArtist = () => {
+    this.setState({songs: this.state.songs.sort((a, b) => a.artist.toLowerCase().localeCompare(b.artist.toLowerCase()))});
+}
+
+sortSongsByGenre = () => {
+    this.setState({songs: this.state.songs.sort((a, b) => a.genre.toLowerCase().localeCompare(b.genre.toLowerCase()))});
+}
+
+sortSongsByRealeaseDate = () => {
+    this.setState({songs: this.state.songs.sort((a,b)=>a.getTime()-b.getTime())});
+}
+
+render(){
   return (
     <div className="App">
       <header className="App-header">
@@ -52,6 +73,7 @@ const App = () => {
       </header>
     </div>
   );
+  }
 }
 
 export default App;
